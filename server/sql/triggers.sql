@@ -24,6 +24,20 @@ BEGIN
     END IF;
 END$$
 
+-- Stub for fn_pass_status function
+DELIMITER $$
+CREATE FUNCTION fn_pass_status(score DECIMAL(10,2), pass_mark DECIMAL(10,2))
+RETURNS VARCHAR(10)
+DETERMINISTIC
+BEGIN
+  IF score >= pass_mark THEN
+    RETURN 'PASS';
+  ELSE
+    RETURN 'FAIL';
+  END IF;
+END$$
+DELIMITER ;
+
 CREATE TRIGGER trg_student_response_after_insert
 AFTER INSERT ON STUDENT_RESPONSE
 FOR EACH ROW
